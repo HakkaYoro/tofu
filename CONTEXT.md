@@ -71,47 +71,72 @@
   - 无序列表：`- 列表内容`。有序列表：`+ 列表内容`。
   - **规则**：引导符与文本之间**必须留有一个半角空格**。
 
-### 3.3 数学公式与方程规范 (Math Mode Rules)
-- **行内公式**：使用单个美元符号包裹，两端紧贴内容：`$E = m c^2$`。
-- **独立块级公式**：
-  - 必须让公式独占一行。
-  - **两端的美元符号 `$` 内部必须各留至少一个半角空格**，否则会被误判为行内公式或导致折行编译崩溃。
-  - *正确示范*：
-    ```typst
-    $ G_(mu nu) + Lambda g_(mu nu) = frac(8 pi G, c^4) T_(mu nu) $ <einstein>
-    ```
-  - *公式标签*：若需要对块级公式进行编号，可在公式末尾直接附加单个英文单词的标签（例如：`<einstein>`）。**标签名称绝对不能包含任何连字符 `-` 或下划线 `_`**。
+### 3.3 数学公式与方程规范 (Math Mode Rules) — 使用 LaTeX 语法 (mitex 引擎)
 
-- **【致命警示】绝对禁止在 Typst 公式中使用 LaTeX 语法（避免编译崩溃）**：
-  大模型极其容易在此处混淆并输出 LaTeX 的反斜杠命令（如 `\frac`, `\text`, `\alpha`, `\times` 等），这会导致 Typst 编译器直接崩溃。
-  
-  **【原理解析】为什么会报错 `unknown variable: ext`？**
-  在 Typst 的数学模式中，反斜杠 `\` 被定义为转义符。当模型输出 LaTeX 语法的 `\text` 时，编译器会将其解析为**转义字符 `\t` (即 Tab 缩进/制表符)**，以及**未定义的变量 `ext`**。因为 `ext` 并不是 Typst 已注册的数学变量，所以会抛出致命的 `unknown variable: ext` 编译崩溃错误！
+**【重要背景】**
+本系统已集成 mitex 数学排版引擎。后端处理器会自动将你输出的 `$...$` 和 `$$...$$` 公式分别转换为 `#mi(...)` 和 `#mitex(...)` 调用，因此：
 
-  请严格执行以下数学公式转换机制：
-  1. **禁止使用反斜杠引导数学函数与乘号**：Typst 的数学函数与运算符为纯英文名加括号。
-     - *错误*：`\frac{a}{b}`，`\times`
-     - *正确*：`frac(a, b)` (或 `a / b`)，`times`
-  2. **公式中的纯文本必须使用双引号 `"..."` 包裹**：不要使用 LaTeX 的 `\text{}` 或 `\mathrm{}`。
-     - *错误*：`\text{carga}`，`\text{Precisión}`
-     - *正确*：`"carga"`，`"Precisión"`
-  3. **希惹/数学符号禁止使用反斜杠**：直接写出其对应的字面量英文单词。
-     - *错误*：`\alpha`, `\beta`, `\theta`, `\infty`, `\sum`
-     - *正确*：`alpha`, `beta`, `theta`, `oo`, `sum`
-  4. **行内公式与独立块级公式的边界规范**：
-     - **行内公式 (Inline Math)**：两端紧贴美元符号，中间没有空格。
-       - *正确示范*：`$"Precisión" = frac("Unidades", "Total") times 100$`
-     - **独立块级公式 (Block Math)**：公式独立成行，且两端的美元符号内部**必须留有至少一个半角空格**。
-       - *正确示范*：`$ "Precisión" = frac("Unidades", "Total") times 100 $ <tiempo>`
-  5. **综合错误与正确示范对比**：
-     - *行内公式致命错误（LaTeX 语法，引发编译崩溃）*：
-       `$\text{Precisión} = \frac{\text{Unidades correctas}}{\text{Unidades contadas}} \times 100$`
-     - *行内公式完全正确（符合 Typst 规范，安全编译）*：
-       `$"Precisión" = frac("Unidades correctas", "Unidades contadas") times 100$`
-     - *独立块级公式致命错误（LaTeX 语法，引发编译崩溃）*：
-       `$T (\text{carga}) = \frac{\text{peso total}}{\text{ancho de banda}}$ <tiempo>`
-     - *独立块级公式完全正确（符合 Typst 规范，安全编译）*：
-       `$ T("carga") = frac("peso total", "ancho de banda") $ <tiempo>` *(注：公式两侧已留有空格)*
+> **你必须在 `$...$` 和 `$$...$$` 内部使用标准 LaTeX 数学语法！**
+> 严禁使用 Typst 原生数学语法（如 `frac(a,b)`, `times`, `alpha` 等无反斜杠形式）。
+
+---
+
+**1. 行内公式 (Inline Math)**
+- 使用单个美元符号包裹：`$...$`
+- 内部使用 LaTeX 语法
+- *正确示范*：
+  ```
+  $E = m c^2$
+  ```
+  ```
+  $\text{Precisión} = \frac{\text{Unidades correctas}}{\text{Unidades contadas}} \times 100$
+  ```
+
+**2. 独立块级公式 (Block Math)**
+- 使用双美元符号包裹：`$$...$$`
+- 公式必须独占一行
+- 内部使用 LaTeX 语法
+- *正确示范*：
+  ```
+  $$ G_{\mu\nu} + \Lambda g_{\mu\nu} = \frac{8\pi G}{c^4} T_{\mu\nu} $$
+  ```
+  ```
+  $$ T(\text{carga}) = \frac{\text{peso total}}{\text{ancho de banda}} $$
+  ```
+
+**3. LaTeX 常用命令速查 (必须使用反斜杠 `\`)：**
+| 用途 | LaTeX 命令（正确 ✓） | 禁止（错误 ✗） |
+|------|----------------------|-----------------|
+| 分数 | `\frac{a}{b}` | `frac(a, b)` |
+| 文本 | `\text{texto}` | `"texto"` |
+| 乘号 | `\times` | `times` |
+| 希腊字母 | `\alpha`, `\beta`, `\theta` | `alpha`, `beta`, `theta` |
+| 无穷 | `\infty` | `oo` |
+| 求和 | `\sum` | `sum` |
+| 下标 | `a_{i}` | `a_i` (仅单字符时可用) |
+| 上标 | `a^{2}` | `a^2` |
+| 根号 | `\sqrt{x}` | — |
+| 积分 | `\int` | — |
+| XOR 圆圈加 | `\oplus` | `plus.circle` |
+| 上划线 | `\overline{A}` | `overline(A)` |
+| 逻辑与 | `\land` / `\wedge` | `and` |
+| 逻辑或 | `\lor` / `\vee` | `or` |
+
+**4. 综合正确示范：**
+- *行内公式（正确 ✓）*：
+  `$\text{Precisión} = \frac{\text{Unidades correctas}}{\text{Unidades contadas}} \times 100$`
+- *块级公式（正确 ✓）*：
+  ```
+  $$ \overline{A \land B} = \overline{A} \lor \overline{B} $$
+  ```
+
+**5. 公式编号与标签（仅块级公式）：**
+- 若需要对块级公式编号，在公式末尾添加 `\tag{标签名}`：
+  ```
+  $$ E = mc^2 \tag{einstein} $$
+  ```
+- 标签名仅可为单个英文单词，不含连字符 `-` 或下划线 `_`。
+
 
 ### 3.4 三线表与图表规范 (APA Table & Figures)
 学术论文要求使用标准的三线表（无垂直分割线）。
@@ -201,6 +226,34 @@
      `title: "Web graphics: A study of {Three.js} in e-commerce"`
    - *正确示范*：
      `title: 'Web graphics: A study of {Three.js} in e-commerce'`
+
+---
+
+### 3.6 `#` 字符转义规范（极其重要，避免 `unknown variable` 编译崩溃）
+
+**核心规则**：在 **普通文本（非数学公式）** 中出现的任意 `#` 字符，**必须**在前面加上反斜杠转义为 `\#`。
+
+**为什么必须转义？**
+Typst 将 `#` 视为代码调用前缀。当编译器遇到文本中的 `#FF5733` 时，会尝试将 `FF5733` 解析为变量名，导致 `unknown variable: FF5733` 编译崩溃。
+
+**常见需要转义的场景：**
+| 场景 | 错误写法（✗ 导致崩溃） | 正确写法（✓ 安全编译） |
+|------|------------------------|------------------------|
+| 网页颜色代码 | `#FF5733` | `\#FF5733` |
+| 编号引用 | `#1`, `#123` | `\#1`, `\#123` |
+| 话题标签（极少在论文中出现） | `#topic` | `\#topic` |
+
+**完整示例：**
+- *错误（导致编译崩溃）*：
+  ```
+  colores en web (p. ej., #FF5733) y protocolos como IPv6 o direcciones MAC.
+  ```
+- *正确（安全编译）*：
+  ```
+  colores en web (p. ej., \#FF5733) y protocolos como IPv6 o direcciones MAC.
+  ```
+
+**【重要例外】**：只有在数学公式内部 `$...$` 或 `$$...$$` 中的 `#` **不需要**转义，因为公式会被后端自动包装进 mitex 的 backtick 参数中，Typst 不会将其解析为代码调用。
 
 ---
 
