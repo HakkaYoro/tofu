@@ -1,0 +1,103 @@
+mano_digital_2003:
+  type: book
+  title: Digital Design
+  author: Mano, M. Morris
+  date: 2003
+  publisher:
+    name: Prentice Hall
+    location: Upper Saddle River, NJ
+  edition: 3rd ed
+  serial-number:
+    isbn: 978-0130621214
+
+floyd_digital_2015:
+  type: book
+  title: Digital Fundamentals
+  author: Floyd, Thomas L.
+  date: 2015
+  publisher:
+    name: Pearson
+    location: Boston
+  edition: 11th ed
+  serial-number:
+    isbn: 978-0132737968
+
+tocci_digital_2017:
+  type: book
+  title: 'Digital Systems: Principles and Applications'
+  author:
+  - Tocci, Ronald J.
+  - Widmer, Neal S.
+  - Moss, Gregory L.
+  date: 2017
+  publisher:
+    name: Pearson
+    location: Boston
+  edition: 12th ed
+  serial-number:
+    isbn: 978-0134220130
+
+deitel_internet_2012:
+  type: book
+  title:
+    value: 'Internet & {World} {Wide} {Web}: how to program'
+    short: Internet & {World} {Wide} {Web}
+  author:
+  - Deitel, Paul J.
+  - Deitel, Harvey M.
+  - Deitel, Abbey
+  date: 2012
+  publisher:
+    name: Pearson
+    location: Boston
+  edition: 5th ed
+  serial-number:
+    isbn: 978-0-13-215100-9
+  note: Includes index
+  parent:
+    type: book
+    title: How to program series
+
+hearn_computer_2011:
+  type: book
+  title: Computer graphics with {OpenGL}
+  author:
+  - Hearn, Donald
+  - Baker, M. Pauline
+  date: 2011
+  publisher:
+    name: Addison Wesley
+    location: Boston
+  edition: 4th ed
+  serial-number:
+    isbn: 978-0-13-605358-3
+
+schildt_java_2018:
+  type: book
+  title:
+    value: 'Java: the complete reference'
+    short: Java
+  author: Schildt, Herbert
+  date: 2018
+  publisher:
+    name: McGraw-Hill Education
+    location: New York
+  edition: Tenth edition
+  serial-number:
+    isbn: 978-1-259-58933-1
+  note: Includes index
+  abstract: '"Fully updated for Java SE 9, Java: The Complete Reference, Tenth Edition explains how to develop, compile, debug, and run Java programs. Bestselling programming author Herb Schildt covers the entire Java language, including its syntax, keywords, and fundamental programming principles. You''ll also find information on key portions of the Java API library, such as I/O, the Collections Framework, the stream library, and the concurrency utilities. Swing, JavaFX, JavaBeans, and servlets are examined and numerous examples demonstrate Java in action. Of course, the new module system added by Java SE 9 is discussed in detail. This Oracle Press resource also offers an introduction to JShell, Java''s new interactive programming tool"–'
+
+parent_computer_2012:
+  type: book
+  title:
+    value: 'Computer animation: algorithms and techniques'
+    short: Computer animation
+  author: Parent, Rick
+  date: 2012
+  publisher:
+    name: Elsevier, Morgan Kaufmann is an imprint of Elsevier
+    location: Amsterdam
+  edition: Third edition
+  serial-number:
+    isbn: 978-0-12-415842-9

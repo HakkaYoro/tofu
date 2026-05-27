@@ -1,0 +1,30 @@
+# Decisiones Basadas en Información: Clave para la Gerencia Logística Eficiente
+
+- Introducción:
+  - Importancia de la información en la gerencia logística moderna.
+  - Panorama general de los temas a abordar.
+- Levantamiento y Manejo de la Información:
+  - Fuentes de información logística (internas y externas).
+  - Técnicas de recolección de datos (sistemas de información, sensores, etc.).
+  - Gestión de bases de datos y análisis de datos logísticos.
+  - La importancia de la calidad del dato.
+- Generación de Informes:
+  - Tipos de informes logísticos (inventario, transporte, almacenamiento, etc.).
+  - Indicadores clave de rendimiento (KPIs) logísticos.
+  - Herramientas para la generación de informes (software de gestión logística, hojas de cálculo).
+  - Visualización de datos y comunicación efectiva de la información.
+- Previsiones e Imprevistos:
+  - Técnicas de previsión de la demanda y el suministro.
+  - Gestión de riesgos y planes de contingencia.
+  - Análisis de escenarios y simulación de situaciones imprevistas.
+- Política Interna y Externa Empresarial:
+  - Impacto de las políticas internas (objetivos, estrategias, cultura organizacional) en las decisiones logísticas.
+  - Influencia de las políticas externas (regulación, competencia, condiciones del mercado) en la logística.
+  - Responsabilidad social corporativa y sostenibilidad en la logística.
+- Casos de Estudio (Opcional):
+  - Análisis de empresas que han implementado con éxito decisiones basadas en información en su logística.
+  - Evaluación de los resultados obtenidos y las lecciones aprendidas.
+- Conclusiones:
+  - Resumen de los principales aprendizajes del trabajo.
+  - Discusión sobre el futuro de la toma de decisiones basada en información en la gerencia logística.
+  - Recomendaciones para la mejora de la gestión de la información en la logística.
